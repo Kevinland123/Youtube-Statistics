@@ -10,3 +10,5 @@ for line in fh:
 print(lst)
 lst.sort()
 print(lst)
+
+print("did it work")
