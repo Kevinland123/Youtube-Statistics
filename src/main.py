@@ -13,4 +13,6 @@ file = open(name, encoding="UTF-8")
 record = dict()
 
 for line in file:
-    print(line)
+    print(line.encode("utf-8"))
+    
+print("Done")
