@@ -25,7 +25,7 @@ for lines in fileRead:
         except:
             #print("Nope")
             videoSkipped = videoSkipped + 1
-print("Videos counted:",  videoCount)
+print("Videos counted:", videoCount)
 print("Videos skipped:", videoSkipped)
 
 fileGenerated.close()
