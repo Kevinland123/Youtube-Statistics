@@ -3,7 +3,7 @@ print("Alright we got this!")
 
 name = input("Enter file:")
 if len(name) < 1 : 
-    name = "history2.html"
+    name = "history3.html"
 
 file = open(name, encoding="UTF-8")
 
@@ -15,7 +15,9 @@ videoCount = 0
 
 for lines in file:
     line = lines.encode("utf-8")
-    line.split()
-    print(line)
+    new = line.decode().split()
+    for x in new:
+        if 'href="https://www.youtube.com/watch' in x:
+            print(x.encode("utf-8"))
     
 print("Done")
