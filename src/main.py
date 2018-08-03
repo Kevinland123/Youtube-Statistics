@@ -18,9 +18,11 @@ for lines in fileRead:
     for x in new:
         try:
             if 'href="https://www.youtube.com/watch' in x:
-                # print(x.encode("utf-8"))
-                # fileGenerated.write(x.encode("utf-8"))
-                fileGenerated.write(x + "\n")
+                index = 6
+                end = x.find('>')
+                videoID = x[index:end-1]
+                
+                fileGenerated.write(videoID + "\n")
                 videoCount = videoCount + 1
         except:
             #print("Nope")
