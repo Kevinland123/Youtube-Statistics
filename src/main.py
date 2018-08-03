@@ -3,7 +3,7 @@ print("Alright we got this!")
 
 name = input("Enter file:")
 if len(name) < 1 : 
-    name = "history.html"
+    name = "history2.html"
 
 file = open(name, encoding="UTF-8")
 
@@ -11,8 +11,11 @@ file = open(name, encoding="UTF-8")
 #print(f.read())
 
 record = dict()
+videoCount = 0
 
-for line in file:
-    print(line.encode("utf-8"))
+for lines in file:
+    line = lines.encode("utf-8")
+    line.split()
+    print(line)
     
 print("Done")
