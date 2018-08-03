@@ -19,5 +19,5 @@ for lines in file:
     for x in new:
         if 'href="https://www.youtube.com/watch' in x:
             print(x.encode("utf-8"))
-    
-print("Done")
+            videoCount = videoCount + 1
+print(videoCount)
