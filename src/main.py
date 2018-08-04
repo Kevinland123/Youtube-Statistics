@@ -28,8 +28,10 @@ for lines in fileRead:
                 #index = x.find('=')
                 index = x.find('?')
                 end = x.find('>')
-                videoID = x[index:end-1]
+                videoID = x[index+3:end-1]
                 #url = x[index+2:end-1]
+                
+                print(videoID)
                 
                 api_key = "AIzaSyCAExHHkEP_iB9RYmHXlaXC-pjPkj9RWQw"
                 searchUrl = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&key=" + api_key + "&part=contentDetails"
