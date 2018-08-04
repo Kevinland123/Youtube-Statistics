@@ -1,4 +1,7 @@
-import pafy
+#import pafy
+import json
+#import urllib
+import urllib.request
 
 print("Alright we got this!")
 
@@ -20,25 +23,34 @@ for lines in fileRead:
     new = line.decode().split()
     totalVideos = len(new)
     for x in new:
-        try:
+        #try:
             if 'href="https://www.youtube.com/watch' in x:
-                index = x.find('=')
+                #index = x.find('=')
+                index = x.find('?')
                 end = x.find('>')
-                url = x[index+2:end-1]
+                videoID = x[index:end-1]
+                #url = x[index+2:end-1]
                 
-                video = pafy.new(url)
-                #print video.length
+                api_key = "AIzaSyAihjjJLtRW9D06B9OTYlSVNp_QYvqB9qQ"
+                searchUrl = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&key=" + api_key + "&part=contentDetails"
+                response = urllib.request.urlopen(searchUrl)
+                data = json.loads(response)
+                all_data = data['items']
+                contentDetails = all_data[0]['contentDetails']
+                duration = contentDetails['duration']
+                print(duration)
                 
+                '''video = pafy.new(url)
                 #fileGenerated.write(x + "\n")
-                fileGenerated.write(video.length + "\n")
+                fileGenerated.write(video.length + "\n")'''
                 videoCount = videoCount + 1
                 videoProcessed = videoProcessed + 1
                 print("Video", videoProcessed, "out of", totalVideos, "videos processed")
-        except:
-            #print("Nope")
-            videoSkipped = videoSkipped + 1
-            videoProcessed = videoProcessed + 1
-            print("Video", videoProcessed, "out of", totalVideos, "videos processed")
+        #except:
+        #    #print("Nope")
+        #    videoSkipped = videoSkipped + 1
+        #    videoProcessed = videoProcessed + 1
+        #    print("Video", videoProcessed, "out of", totalVideos, "videos processed")
     
     
 print("Videos counted:", videoCount)
