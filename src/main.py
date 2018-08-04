@@ -7,7 +7,7 @@ print("Alright we got this!")
 
 name = input("Enter file:")
 if len(name) < 1 : 
-    name = "history2.html"
+    name = "history.html"
 
 fileRead = open(name, encoding="UTF-8")
 fileGenerated = open('ListOfVideo.txt', 'w')
@@ -19,8 +19,9 @@ videoSkipped = 0
 videoProcessed = 0
 
 totalTimeSeconds = 0
-retentionFactor = input("Enter retention factor: (Ex: 0.8)")
-if len(retentionFactor) < 1 : 
+try:
+    retentionFactor = float(input("Enter retention factor: (Ex: 0.8)"))
+except:
     retentionFactor = 0.8
 
 for lines in fileRead:
@@ -63,7 +64,8 @@ for lines in fileRead:
 print("Videos counted:", videoCount)
 print("Videos skipped:", videoSkipped)
 
-totalTimeSeconds = totalTimeSeconds * retentionFactor
+totalTimeSeconds = round(totalTimeSeconds * retentionFactor)
+print(totalTimeSeconds)
 totalTime = str(datetime.timedelta(seconds=totalTimeSeconds))
 print(totalTime)
 
