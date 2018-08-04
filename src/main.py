@@ -19,6 +19,9 @@ videoSkipped = 0
 videoProcessed = 0
 
 totalTimeSeconds = 0
+retentionFactor = input("Enter retention factor: (Ex: 0.8)")
+if len(retentionFactor) < 1 : 
+    retentionFactor = 0.8
 
 for lines in fileRead:
     line = lines.encode("utf-8")
@@ -60,6 +63,7 @@ for lines in fileRead:
 print("Videos counted:", videoCount)
 print("Videos skipped:", videoSkipped)
 
+totalTimeSeconds = totalTimeSeconds * retentionFactor
 totalTime = str(datetime.timedelta(seconds=totalTimeSeconds))
 print(totalTime)
 
