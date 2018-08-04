@@ -31,7 +31,7 @@ for lines in fileRead:
                 videoID = x[index:end-1]
                 #url = x[index+2:end-1]
                 
-                api_key = "AIzaSyAihjjJLtRW9D06B9OTYlSVNp_QYvqB9qQ"
+                api_key = "AIzaSyCAExHHkEP_iB9RYmHXlaXC-pjPkj9RWQw"
                 searchUrl = "https://www.googleapis.com/youtube/v3/videos?id=" + videoID + "&key=" + api_key + "&part=contentDetails"
                 response = urllib.request.urlopen(searchUrl)
                 data = json.loads(response)
