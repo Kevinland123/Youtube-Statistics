@@ -88,7 +88,7 @@ if maxLength == -1:
     print("No max length set")
 else:
     print("Max length set to:", (maxLength / 60))
-
+ 
 totalTimeSeconds = round(totalTimeSeconds * retentionFactor)
 totalTime = str(datetime.timedelta(seconds=totalTimeSeconds))
 print("Total watch time:", totalTime)
