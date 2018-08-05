@@ -52,7 +52,6 @@ for lines in fileRead:
         #    print("Nope")
         #    videoSkipped = videoSkipped + 1
 
-
 for videos in videoList:
     try:
         api_key = "AIzaSyCAExHHkEP_iB9RYmHXlaXC-pjPkj9RWQw"
@@ -88,9 +87,11 @@ if maxLength == -1:
     print("No max length set")
 else:
     print("Max length set to:", (maxLength / 60))
- 
+
 totalTimeSeconds = round(totalTimeSeconds * retentionFactor)
-totalTime = str(datetime.timedelta(seconds=totalTimeSeconds))
+skippedTime = round(totalTimeSeconds/videoCount)
+totalTime = str(datetime.timedelta(seconds=totalTimeSeconds+(skippedTime*videoSkipped)))
+
 print("Total watch time:", totalTime)
 
 fileGenerated.close()
