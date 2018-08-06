@@ -38,19 +38,15 @@ totalTimeSeconds = 0
 for lines in fileRead:
     line = lines.encode("utf-8")
     new = line.decode().split()
-    totalVideoCount = len(new)
     for x in new:
-        #try:
-            if 'href="https://www.youtube.com/watch' in x:
-                index = x.find('?')
-                end = x.find('>')
-                videoID = x[index+3:end-1]
-                videoList.append(videoID)
+        
+        if 'href="https://www.youtube.com/watch' in x:
+            index = x.find('?')
+            end = x.find('>')
+            videoID = x[index+3:end-1]
+            videoList.append(videoID)
                 
-                videoCount = videoCount + 1
-        #except:
-        #    print("Nope")
-        #    videoSkipped = videoSkipped + 1
+            videoCount = videoCount + 1
 
 for videos in videoList:
     try:
@@ -78,6 +74,7 @@ for videos in videoList:
     except:
         print("Skipped video", videoList.index(videos))
         videoSkipped = videoSkipped + 1
+        videoProcessed = videoProcessed + 1
 
 print("Videos counted:", videoCount)
 print("Videos skipped:", videoSkipped)
